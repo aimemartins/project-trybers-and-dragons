@@ -61,15 +61,36 @@ export default class Character implements Fighter {
   }
 
   receiveDamage(attackPoints:number):number {
-    const damage = attackPoints - this._defense;
-    return damage;
+    const damage = this._defense - attackPoints;
+    if (damage > 0) {
+      return this._lifePoints - damage;
+    } 
+    if (damage <= 0) {
+      this._lifePoints = -1;
+    } else {
+      return this._maxLifePoints;
+    }
   }
 
   attack(enemy: Fighter):void {
     enemy.receiveDamage(this._strength);
   }
 
-  levelUp():void;
+  levelUp():void {
+    this._maxLifePoints += getRandomInt(1, 10);
+    this._strength += getRandomInt(1, 10);
+    this._dexterity += getRandomInt(1, 10);
+    this._defense += getRandomInt(1, 10);
+    this._energy.amount = 10;
+    /* O atributo maxLifePoints do Character nunca poderá ser maior que 
+    o maxLifePoints de sua raça (race). ) */
+    const maxLPRace = this._race.maxLifePoints;
+    const maxLPCharac = this._maxLifePoints;
+    
+    if (maxLPCharac > maxLPRace) { this._maxLifePoints = maxLPRace; }
+    // o atributo lifePoints também deve ser atualizado, recebendo o novo valor de maxLifePoints
+    this._lifePoints = this._maxLifePoints;
+  }
 
   special?(enemy: Fighter):void;
 }

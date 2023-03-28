@@ -1,6 +1,6 @@
 // import Character from '../Character';
 // import Battle from './Battle';
-// import Fighter from '../Fighter';
+// // import Fighter from '../Fighter';
 
 // export default class PVP extends Battle {
 //   public play01: Character;
@@ -12,6 +12,10 @@
 //   }
 
 //   fight(): number {
+//     while (this.play01.lifePoints > 0 || this.play02.lifePoints > 0) {
+//       this.play01.attack(this.play02);
+//       this.play02.attack(this.play01);
+//     }
 //     return this.player.lifePoints === -1 ? -1 : 1;
 //   }
 // }
