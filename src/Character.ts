@@ -56,20 +56,29 @@ export default class Character implements Fighter {
     return this._dexterity;
   }
 
+  // ! energy é um objeto e não deve retornar ele diretamente
   get energy():Energy {
-    return this._energy;
+    return { ...this._energy };
   }
 
+  // !
   receiveDamage(attackPoints:number):number {
-    const damage = this._defense - attackPoints;
+    // defense do personagem deve ser subtraído do valor do ataque recebido (attackPoints)
+    const damage = attackPoints - this._defense;
+    // damage > 0, você perde esse valor (damage) em pontos de vida (lifePoints)
     if (damage > 0) {
-      return this._lifePoints - damage;
-    } 
-    if (damage <= 0) {
-      this._lifePoints = -1;
+      this._lifePoints -= damage;
     } else {
-      return this._maxLifePoints;
+      // damage <= 0, você deve perder apenas 1 ponto de vida (lifePoints)
+      this._lifePoints -= 1;
     }
+    
+    // se lifePoints chegar a 0 ou menos, você deve fixá-la com o valor -1
+    if (this._lifePoints <= 0) {
+      this._lifePoints = -1;
+    } 
+    // Ao final sempre retorne o valor atualizado de seus pontos de vida.
+    return this._lifePoints;
   }
 
   attack(enemy: Fighter):void {
