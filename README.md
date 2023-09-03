@@ -154,7 +154,7 @@ Para este projeto, você deverá aplicar os princípios da arquitetura `SOLID` e
 
 </details>
 
-<details>
+
    
 ## Status
 O projeto está finalizado com 100% dos requisitos  ✅ 
