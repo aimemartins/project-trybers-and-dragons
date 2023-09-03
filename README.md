@@ -157,7 +157,7 @@ Para este projeto, você deverá aplicar os princípios da arquitetura `SOLID` e
 
    
 ## Status
-O projeto está finalizado com 100% dos requisitos  ✅ 
+O projeto está com 60% dos requisitos totais finalizados e em andamento com a resolução dos demais requisitos 🚧 
 
 ## Requisitos 
 ## Requisitos Obrigatórios
